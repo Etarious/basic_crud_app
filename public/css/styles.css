@@ -1,0 +1,33 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Raleway', sans-serif;
+}
+
+.wrapper{
+    background-color: rgb(230, 230, 230);
+}
+
+.content{
+    text-align: center;
+    padding: 100px;
+    height: 100%;
+}
+
+.footer{
+    color: white;
+    text-align: center;
+    padding: 50px;
+}
+
+.etarious{
+    text-decoration: none;
+}
+
+form{
+    max-width: 500px;
+    border: black solid 1px;
+    border-radius: 10px;
+    padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
