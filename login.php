@@ -1,3 +1,18 @@
+<?php
+
+session_start();
+
+if (!empty($_SESSION)) {
+    # A user could be logged in already...
+    if (isset($_SESSION["username"])) {
+        # A user is logged in...
+        header("Location: ./");
+    }
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,17 +29,23 @@
         ?>
 
         <div class="content">
-            <form method="post">
+            <form method="POST">
+                <div>
+                    <?php
+                    require_once("./process/login_process.php");
+                    ?>
+                </div>
                 <h2 class="mb-2">Login Form</h2>
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Username</label>
-                    <input type="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="name" name="username" class="form-control" id="username" placeholder="Username: e.g. John123" value="<?php if (isset($_POST["username"])) echo $_POST["username"] ?>">
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" name="password" class="form-control" id="password" aria-describedby="passwordHelp" placeholder="Password: e.g. Password123">
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button> <span><a href="./forgot_password.php">Forgot password?</a></span>
+                <input type="submit" name="submit" value="Submit" class="btn btn-primary"> <span>Not yet registered? <a href="./register.php">Register</a></span>
+                <div><a href="./forgot_password.php">Forgot password?</a></div>
             </form>
         </div>
 

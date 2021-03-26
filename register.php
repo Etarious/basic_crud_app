@@ -1,3 +1,18 @@
+<?php
+
+session_start();
+
+if (!empty($_SESSION)) {
+    # A user could be logged in already...
+    if (isset($_SESSION["username"])) {
+        # A user is logged in...
+        header("Location: ./");
+    }
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,23 +43,23 @@
                 <div class=" mb-3">
                     <label for="email" class="form-label">Email address</label>
                     <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email: e.g. john@email.com" value="<?php if (isset($_POST["email"])) echo $_POST["email"] ?>">
-                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    <div id="emailHelp" class="form-text">Please put a dummy email address just like the example above.</div>
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
                     <input type="password" name="password" class="form-control" id="password" aria-describedby="passwordHelp" placeholder="Password: e.g. Password123">
                     <div id=" passwordHelp" class="form-text">Password must be 8 characters or more, and must include upper case, lower case and other characters
+                    </div>
                 </div>
-        </div>
-        <div class="mb-3">
-            <label for="confirm" class="form-label">Confirm Password</label>
-            <input type="password" name="confirm" class="form-control" id="confirm" aria-describedby="confirmHelp" placeholder="Same as Password">
-            <div id="confirmHelp" class="form-text">Must be same as Password</div>
-        </div>
-        <input type="submit" name="submit" value="Submit" class="btn btn-primary">
-        </form>
+                <div class="mb-3">
+                    <label for="confirm" class="form-label">Confirm Password</label>
+                    <input type="password" name="confirm" class="form-control" id="confirm" aria-describedby="confirmHelp" placeholder="Same as Password">
+                    <div id="confirmHelp" class="form-text">Must be same as Password</div>
+                </div>
+                <input type="submit" name="submit" value="Submit" class="btn btn-primary"> <span>Already registered? <a href="./login.php">Login</a></span>
+            </form>
 
-    </div>
+        </div>
     </div>
 
     <?php include("./includes/footer.includes.php") ?>
